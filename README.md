@@ -1,5 +1,5 @@
-***     SlideshowCinematic     ***
-*** llicon, CMPM120, 4/25/2023 ***
+# SlideshowCinematic #
+# llicon, CMPM120, 4/25/2023 #
 Slideshow cinematic based on Phaser
 
 Key Requirments for this Assignment and how I accomplished them:
