@@ -8,12 +8,7 @@ class SceneA extends Phaser.Scene{
     this.load.image('logo', 'assets/BuggyGames.png');}
     create (){
         this.cameras.main.fadeIn();
-
-        this.imageObject = this.add.image(
-            400,//x
-            250,//y
-            'logo',
-        )
+        this.add.sprite(400, 250,'logo',)
         //next scene
         this.time.delayedCall(4000, () => {
         this.cameras.main.fadeOut();    
@@ -36,6 +31,7 @@ class SceneB extends Phaser.Scene{
         this.load.image('fly', 'assets/fly.png');
         this.load.image('bee', 'assets/bee.png');
         this.load.audio('music', 'assets/audio/music.mp3');
+        console.log("finish preloading");
     }
     create (){
         this.cameras.main.fadeIn();
@@ -47,13 +43,24 @@ class SceneB extends Phaser.Scene{
             'grass',
         )
         this.imageObject.setScale(1.25) 
+
         //text for title 
-        this.add.text(25, 150, "In a world where society is full of bugs", {
+        this.add.text(5, 150, "In a world where society consists of bugs", {
             fontSize: 32,
             color: ('black'),
             stroke: '#1212E3',
             strokeThickness: 3
         })
+
+        let rect1 = new Phaser.Geom.Rectangle(5, 190, 790, 5);
+        let rect2 = new Phaser.Geom.Rectangle(5, 140, 790, 5);
+        let graphics1 = this.add.graphics({ fillStyle: { color: 0x0000ff } });
+        let graphics2 = this.add.graphics({ fillStyle: { color: 0x000000 } });
+        graphics1.fillRectShape(rect1);
+        graphics1.fillRectShape(rect2);
+
+        
+
         //bee
         this.time.delayedCall(2000, () => {
             const bee = this.add.image(-500, 400, 'bee');
@@ -65,14 +72,18 @@ class SceneB extends Phaser.Scene{
                 ease: 'cubic.inOut',
                 scale: .15
             });
-            //text for fly
-            this.add.text(85, 300, "The Good", {
+            //text for bee
+            this.add.text(105, 300, "The Good", {
                 fontSize: 20,
                 color: ('black'),
                 stroke: '#000000',
                 strokeThickness: 1
             })   
+            let rectBee = new Phaser.Geom.Rectangle(105, 325, 100, 5);   
+            graphics2.fillRectShape(rectBee);  
         }, this);
+
+
         //beetle
         this.time.delayedCall(4000, () => {
             const beetle = this.add.image(2500, 400, 'beetle');
@@ -85,14 +96,15 @@ class SceneB extends Phaser.Scene{
                 ease: 'cubic.inOut',
     
             });
-            //text for bee
-            this.add.text(585, 300, "The Bad", {
+            //text for beetle
+            this.add.text(605, 300, "The Bad", {
                 fontSize: 20,
                 color: ('black'),
                 stroke: '#000000',
                 strokeThickness: 1
                 })
-                       
+            let rectBeetle = new Phaser.Geom.Rectangle(605, 325, 90, 5);   
+            graphics2.fillRectShape(rectBeetle);              
         }, this);
 
         //fly
@@ -106,13 +118,15 @@ class SceneB extends Phaser.Scene{
                 repeat: 0,
                 ease: 'cubic.inOut',
             });
-        //text for bee
-            this.add.text(290, 300, "The Annoying", {
+        //text for fly
+            this.add.text(325, 300, "The Annoying", {
                 fontSize: 20,
                 color: ('black'),
                 stroke: '#000000',
                 strokeThickness: 1
-                })    
+                })
+            let rectFly = new Phaser.Geom.Rectangle(322.5, 325, 150, 5);   
+            graphics2.fillRectShape(rectFly);     
         }, this);
         
         
@@ -148,7 +162,8 @@ class SceneC extends Phaser.Scene{
         super("SceneC");
     }
     preload (){
-    this.load.image('mountains', 'assets/Menuart.jpg');       
+    this.load.image('mountains', 'assets/menuArt.jpg');       
+    this.load.image('menuTitle', 'assets/menuTitle.png'); 
     this.load.audio('musicS', 'assets/audio/musicSped.wav');
     }
     create (){
@@ -165,14 +180,25 @@ class SceneC extends Phaser.Scene{
         }
         this.music.play(musicConfig); //play music
         this.cameras.main.fadeIn();
-        this.imageObject = this.add.image(
+        this.imageObject1 = this.add.image(
             400,//x
             300,//y
             'mountains',
         )
-        this.imageObject.setScale(.13) //resize
+        this.add.circle(650, 125, 80, 0xFCB71A); //circle
 
-
+        this.imageObject2 = this.add.image(
+            200,//x
+            175,//y
+            'menuTitle',
+        )
+        this.imageObject2.setScale(.13) //resize
+        this.add.text(30, 170, "PLAY\nSETTINGS\nCREDITS\nQUIT", {
+            fontSize: 32,
+            color: ('black'),
+            stroke: '#000000',
+            strokeThickness: 3
+        })
 }
 }
 
