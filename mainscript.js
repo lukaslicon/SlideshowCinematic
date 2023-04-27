@@ -32,18 +32,46 @@ class SceneB extends Phaser.Scene{
     }
     preload (){
         this.load.image('grass', 'assets/grass.png');
+        this.load.image('fly', 'assets/fly.png');
+        this.load.image('bee', 'assets/bee.png');
         this.load.audio('music', 'assets/audio/music.mp3');
     }
     create (){
         this.cameras.main.fadeIn();
 
-        //img
+        //background img
         this.imageObject = this.add.image(
             400,//x
             250,//y
             'grass',
         )
-        this.imageObject.setScale(1.25) //resize
+        this.imageObject.setScale(1.25) 
+
+        //fly
+        const fly = this.add.image(-1500, 400, 'fly');
+        this.tweens.add({
+            targets: fly,
+            x: 150,
+            duration: 2000,
+            repeat: 0,
+            ease: 'cubic.in',
+            scale: .6
+        });
+
+        //bee
+        let bee = this.add.image(2000, 400, 'bee');
+
+        this.tweens.add({
+            scale: .15,
+            targets: bee,
+            x: 650,
+            duration: 2000,
+            repeat: 0,
+            ease: 'cubic.in',
+
+        });
+
+
 
         //music
         this.music = this.sound.add('music');
@@ -58,17 +86,11 @@ class SceneB extends Phaser.Scene{
         }
         this.music.play(musicConfig);
 
-        //text
-        this.add.text(400, 150, 'Hello World', { font: '"Press Start 2P"' });
-
-
-
-
         //next scene
-        this.time.delayedCall(4000, () => {
+        this.time.delayedCall(9000, () => {
             this.cameras.main.fadeOut();    
         }, this);
-            this.time.delayedCall(5000, () => {
+            this.time.delayedCall(10000, () => {
                 this.scene.start('SceneC');    
         }, this);
     }
