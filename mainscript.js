@@ -32,6 +32,7 @@ class SceneB extends Phaser.Scene{
     }
     preload (){
         this.load.image('grass', 'assets/grass.png');
+        this.load.image('beetle', 'assets/beetle.png');
         this.load.image('fly', 'assets/fly.png');
         this.load.image('bee', 'assets/bee.png');
         this.load.audio('music', 'assets/audio/music.mp3');
@@ -46,32 +47,75 @@ class SceneB extends Phaser.Scene{
             'grass',
         )
         this.imageObject.setScale(1.25) 
+        //text for title 
+        this.add.text(25, 150, "In a world where society is full of bugs", {
+            fontSize: 32,
+            color: ('black'),
+            stroke: '#1212E3',
+            strokeThickness: 3
+        })
+        //bee
+        this.time.delayedCall(2000, () => {
+            const bee = this.add.image(-500, 400, 'bee');
+            this.tweens.add({
+                targets: bee,
+                x: 150,
+                duration: 1000,
+                repeat: 0,
+                ease: 'cubic.inOut',
+                scale: .15
+            });
+            //text for fly
+            this.add.text(85, 300, "The Good", {
+                fontSize: 20,
+                color: ('black'),
+                stroke: '#000000',
+                strokeThickness: 1
+            })   
+        }, this);
+        //beetle
+        this.time.delayedCall(4000, () => {
+            const beetle = this.add.image(2500, 400, 'beetle');
+            this.tweens.add({
+                scale: .15,
+                targets: beetle,
+                x: 650,
+                duration: 1000,
+                repeat: 0,
+                ease: 'cubic.inOut',
+    
+            });
+            //text for bee
+            this.add.text(585, 300, "The Bad", {
+                fontSize: 20,
+                color: ('black'),
+                stroke: '#000000',
+                strokeThickness: 1
+                })
+                       
+        }, this);
 
         //fly
-        const fly = this.add.image(-1500, 400, 'fly');
-        this.tweens.add({
-            targets: fly,
-            x: 150,
-            duration: 2000,
-            repeat: 0,
-            ease: 'cubic.in',
-            scale: .6
-        });
-
-        //bee
-        let bee = this.add.image(2000, 400, 'bee');
-
-        this.tweens.add({
-            scale: .15,
-            targets: bee,
-            x: 650,
-            duration: 2000,
-            repeat: 0,
-            ease: 'cubic.in',
-
-        });
-
-
+        this.time.delayedCall(6000, () => {
+            const fly = this.add.image(400, 2000, 'fly');
+            this.tweens.add({
+                scale: .65,
+                targets: fly,
+                y: 400,
+                duration: 1000,
+                repeat: 0,
+                ease: 'cubic.inOut',
+            });
+        //text for bee
+            this.add.text(290, 300, "The Annoying", {
+                fontSize: 20,
+                color: ('black'),
+                stroke: '#000000',
+                strokeThickness: 1
+                })    
+        }, this);
+        
+        
 
         //music
         this.music = this.sound.add('music');
@@ -87,49 +131,21 @@ class SceneB extends Phaser.Scene{
         this.music.play(musicConfig);
 
         //next scene
-        this.time.delayedCall(9000, () => {
+        this.time.delayedCall(10000, () => {
             this.cameras.main.fadeOut();    
         }, this);
-            this.time.delayedCall(10000, () => {
+            this.time.delayedCall(11000, () => {
                 this.scene.start('SceneC');    
         }, this);
     }
 }
 
-//third scene, explanation scene
+
+//fourth scene, menu scene, goes back to studio name
 class SceneC extends Phaser.Scene{
     constructor()
     {
         super("SceneC");
-    }
-    preload (){
-    this.load.image('grass', 'assets/grass.png');       
-    }
-    create (){
-        
-        this.cameras.main.fadeIn();
-        this.imageObject = this.add.image(
-            400,//x
-            250,//y
-            'grass',
-        )
-        this.imageObject.setScale(1.25) //resize
-
-        //next scene
-        this.time.delayedCall(4000, () => {
-            this.cameras.main.fadeOut();    
-        }, this);
-            this.time.delayedCall(5000, () => {
-                this.scene.start('SceneD');    
-        }, this);
-}
-}
-
-//fourth scene, menu scene, goes back to studio name
-class SceneD extends Phaser.Scene{
-    constructor()
-    {
-        super("SceneD");
     }
     preload (){
     this.load.image('mountains', 'assets/Menuart.jpg');       
@@ -167,7 +183,7 @@ config = {
     width: 800,
     height: 600, 
     backgroundColor: 0xFFFFFF,
-    scene: [SceneA, SceneB, SceneC, SceneD],
+    scene: [SceneA, SceneB, SceneC],
 }
 
 let game = new Phaser.Game(config);
