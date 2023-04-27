@@ -134,39 +134,10 @@ class SceneD extends Phaser.Scene{
         )
         this.imageObject.setScale(.13) //resize
 
-        //back to SceneA
-        this.time.delayedCall(4000, () => {
-            this.cameras.main.fadeOut();    
-        }, this);
-            this.time.delayedCall(5000, () => {
-                this.scene.start('SceneEnd');    
-        }, this);
+
 }
 }
 
-//first scene, studio introduction //done
-class SceneEnd extends Phaser.Scene{
-    constructor()
-    {
-        super("SceneEnd");
-    }
-    preload (){       
-    this.load.image('logo', 'assets/BuggyGames.png');}
-    create (){
-        this.cameras.main.fadeIn();
-
-        this.imageObject = this.add.image(
-            400,//x
-            250,//y
-            'logo',
-        )
-        //next scene
-        this.time.delayedCall(4000, () => {
-        this.cameras.main.fadeOut();    
-        this.game.sound.stopAll(); //stop current music
-    }, this);
-}
-}
 
 
 config = {
@@ -174,7 +145,7 @@ config = {
     width: 800,
     height: 600, 
     backgroundColor: 0xFFFFFF,
-    scene: [SceneA, SceneB, SceneC, SceneD, SceneEnd],
+    scene: [SceneA, SceneB, SceneC, SceneD],
 }
 
 let game = new Phaser.Game(config);
