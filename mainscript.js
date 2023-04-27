@@ -36,14 +36,17 @@ class SceneB extends Phaser.Scene{
     }
     create (){
         this.cameras.main.fadeIn();
+
+        //img
         this.imageObject = this.add.image(
             400,//x
             250,//y
             'grass',
         )
         this.imageObject.setScale(1.25) //resize
-        this.music = this.sound.add('music');
 
+        //music
+        this.music = this.sound.add('music');
         let musicConfig = {
             mute:false,
             volume: 1,
@@ -53,7 +56,13 @@ class SceneB extends Phaser.Scene{
             loop: true,
             delay: 0
         }
-        this.music.play(musicConfig); //play music
+        this.music.play(musicConfig);
+
+        //text
+        this.add.text(400, 150, 'Hello World', { font: '"Press Start 2P"' });
+
+
+
 
         //next scene
         this.time.delayedCall(4000, () => {
@@ -101,7 +110,7 @@ class SceneD extends Phaser.Scene{
         super("SceneD");
     }
     preload (){
-    this.load.image('grass', 'assets/grass.png');       
+    this.load.image('mountains', 'assets/Menuart.jpg');       
     this.load.audio('musicS', 'assets/audio/musicSped.wav');
     }
     create (){
@@ -120,10 +129,10 @@ class SceneD extends Phaser.Scene{
         this.cameras.main.fadeIn();
         this.imageObject = this.add.image(
             400,//x
-            250,//y
-            'grass',
+            300,//y
+            'mountains',
         )
-        this.imageObject.setScale(1.25) //resize
+        this.imageObject.setScale(.13) //resize
 
         //back to SceneA
         this.time.delayedCall(4000, () => {
@@ -154,6 +163,7 @@ class SceneEnd extends Phaser.Scene{
         //next scene
         this.time.delayedCall(4000, () => {
         this.cameras.main.fadeOut();    
+        this.game.sound.stopAll(); //stop current music
     }, this);
 }
 }
