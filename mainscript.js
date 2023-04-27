@@ -124,16 +124,47 @@ class SceneD extends Phaser.Scene{
             'grass',
         )
         this.imageObject.setScale(1.25) //resize
-     
+
+        //back to SceneA
+        this.time.delayedCall(4000, () => {
+            this.cameras.main.fadeOut();    
+        }, this);
+            this.time.delayedCall(5000, () => {
+                this.scene.start('SceneEnd');    
+        }, this);
 }
 }
+
+//first scene, studio introduction //done
+class SceneEnd extends Phaser.Scene{
+    constructor()
+    {
+        super("SceneEnd");
+    }
+    preload (){       
+    this.load.image('logo', 'assets/BuggyGames.png');}
+    create (){
+        this.cameras.main.fadeIn();
+
+        this.imageObject = this.add.image(
+            400,//x
+            250,//y
+            'logo',
+        )
+        //next scene
+        this.time.delayedCall(4000, () => {
+        this.cameras.main.fadeOut();    
+    }, this);
+}
+}
+
 
 config = {
     type: Phaser.AUTO,
     width: 800,
     height: 600, 
     backgroundColor: 0xFFFFFF,
-    scene: [SceneA, SceneB, SceneC, SceneD],
+    scene: [SceneA, SceneB, SceneC, SceneD, SceneEnd],
 }
 
 let game = new Phaser.Game(config);
