@@ -5,10 +5,10 @@ class SceneA extends Phaser.Scene{
         super("SceneA");
     }
     preload (){       
-    this.load.image('logo', 'assets/BuggyGames.png');}
+    this.load.image('logo', 'assets/buggyGames.png');}
     create (){
         this.cameras.main.fadeIn();
-        this.add.sprite(400, 250,'logo',)
+        this.add.sprite(400,300,'logo',)
         //next scene
         this.time.delayedCall(4000, () => {
         this.cameras.main.fadeOut();    
@@ -162,7 +162,7 @@ class SceneC extends Phaser.Scene{
         super("SceneC");
     }
     preload (){
-    this.load.image('mountains', 'assets/menuArt.jpg');       
+    this.load.image('mountain', 'assets/menuArt.jpg');       
     this.load.image('menuTitle', 'assets/menuTitle.png'); 
     this.load.audio('musicS', 'assets/audio/musicSped.wav');
     }
@@ -183,7 +183,7 @@ class SceneC extends Phaser.Scene{
         this.imageObject1 = this.add.image(
             400,//x
             300,//y
-            'mountains',
+            'mountain',
         )
         this.add.circle(650, 125, 80, 0xFCB71A); //circle
 
