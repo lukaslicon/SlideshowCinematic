@@ -211,7 +211,7 @@ config = {
     width: 800,
     height: 600, 
     backgroundColor: 0xFFFFFF,
-    scene: [SceneC, SceneB, SceneA],
+    scene: [SceneA, SceneB, SceneC],
 }
 
 let game = new Phaser.Game(config);
