@@ -5,7 +5,7 @@ class SceneA extends Phaser.Scene{
         super("SceneA");
     }
     preload (){       
-    this.load.image('logo', 'assets/BuggyGames.png');}
+    this.load.image('logo', 'assets/buggyGames.png');}
     create (){
         this.cameras.main.fadeIn();
         this.add.sprite(400, 250,'logo',)
