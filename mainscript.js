@@ -189,12 +189,12 @@ class SceneC extends Phaser.Scene{
            'mountains',
         )
         this.add.circle(650, 125, 80, 0xFCB71A); //circle
-        this.imageObject2 = this.add.image(
+        this.add.image(
             200,//x
             175,//y
             'menuTitle',
         )
-        this.imageObject2.setScale(.13) //resize
+        .setScale(.13) //resize
         this.add.text(30, 170, "PLAY\nSETTINGS\nCREDITS\nQUIT", {
             fontSize: 32,
             color: ('black'),
@@ -211,7 +211,7 @@ config = {
     width: 800,
     height: 600, 
     backgroundColor: 0xFFFFFF,
-    scene: [SceneA, SceneB, SceneC],
+    scene: [SceneC, SceneB, SceneA],
 }
 
 let game = new Phaser.Game(config);
