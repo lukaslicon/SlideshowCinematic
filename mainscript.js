@@ -204,8 +204,6 @@ class SceneC extends Phaser.Scene{
 }
 }
 
-
-
 config = {
     type: Phaser.AUTO,
     width: 800,
