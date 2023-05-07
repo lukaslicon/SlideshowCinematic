@@ -167,6 +167,12 @@ class SceneC extends Phaser.Scene{
     this.load.audio('musicS', 'assets/audio/musicSped.wav');
     }
     create (){
+        this.cameras.main.fadeIn();
+        this.add.image(
+            400,//x
+            300,//y
+            'mountain',
+        )
         this.game.sound.stopAll(); //stop current music
         this.music = this.sound.add('musicS'); //play new music
         let musicConfig = {
@@ -179,13 +185,8 @@ class SceneC extends Phaser.Scene{
             delay: 0
         }
         this.music.play(musicConfig); //play music
-        this.cameras.main.fadeIn();
-        this.add.image(
-            400,//x
-            300,//y
-            'mountain',
-        )
-        this.add.circle(650, 125, 80, 0xFCB71A); //circle
+
+       this.add.circle(650, 125, 80, 0xFCB71A); //circle
 
        this.add.image(
             200,//x
