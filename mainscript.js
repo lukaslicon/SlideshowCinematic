@@ -180,14 +180,14 @@ class SceneC extends Phaser.Scene{
         }
         this.music.play(musicConfig); //play music
         this.cameras.main.fadeIn();
-        this.imageObject1 = this.add.image(
+        this.add.image(
             400,//x
             300,//y
             'mountain',
         )
         this.add.circle(650, 125, 80, 0xFCB71A); //circle
 
-        this.imageObject2 = this.add.image(
+       this.add.image(
             200,//x
             175,//y
             'menuTitle',
