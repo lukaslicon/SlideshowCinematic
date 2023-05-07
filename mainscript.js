@@ -164,7 +164,7 @@ class SceneC extends Phaser.Scene{
         super("SceneC");
     }
     preload (){
-    this.load.image('mountains', 'assets/menuArts.jpg');       
+    this.load.image('mountains', 'assets/menuArts.png');       
     this.load.image('menuTitle', 'assets/menuTitle.png'); 
     this.load.audio('musicS', 'assets/audio/musicSped.wav');
     }
