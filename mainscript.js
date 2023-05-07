@@ -1,8 +1,8 @@
 //first scene, studio introduction //done
-class SceneA extends Phaser.Scene{
+class Scene1 extends Phaser.Scene{
     constructor()
     {
-        super("SceneA");
+        super("Scene1");
     }
     preload (){       
     this.load.image('logo', 'assets/buggyGames.png');
@@ -16,16 +16,16 @@ class SceneA extends Phaser.Scene{
         this.cameras.main.fadeOut();    
     }, this);
         this.time.delayedCall(5000, () => {
-            this.scene.start('SceneB');    
+            this.scene.start('Scene2');    
     }, this);
 }
 }
 
 //second scene, tired of bugs scene
-class SceneB extends Phaser.Scene{
+class Scene2 extends Phaser.Scene{
     constructor()
     {
-        super("SceneB");
+        super("Scene2");
     }
     preload (){
         this.load.image('grass', 'assets/grass.png');
@@ -151,17 +151,17 @@ class SceneB extends Phaser.Scene{
             this.cameras.main.fadeOut();    
         }, this);
             this.time.delayedCall(11000, () => {
-                this.scene.start('SceneC');    
+                this.scene.start('Scene3');    
         }, this);
     }
 }
 
 
 //fourth scene, menu scene, goes back to studio name
-class SceneC extends Phaser.Scene{
+class Scene3 extends Phaser.Scene{
     constructor()
     {
-        super("SceneC");
+        super("Scene3");
     }
     preload (){
     this.load.image('mountains', 'assets/menuArts.png');       
@@ -211,7 +211,7 @@ config = {
     width: 800,
     height: 600, 
     backgroundColor: 0xFFFFFF,
-    scene: [SceneA, SceneB, SceneC],
+    scene: [Scene1, Scene2, Scene3],
 }
 
 let game = new Phaser.Game(config);
